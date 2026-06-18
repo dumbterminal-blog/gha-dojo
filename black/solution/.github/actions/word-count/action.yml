@@ -1,0 +1,15 @@
+name: Word Count
+description: Counts the words in a string
+
+inputs:
+  text:
+    description: The text to count words in
+    required: true
+
+outputs:
+  count:
+    description: The number of words
+
+runs:
+  using: node20
+  main: index.js

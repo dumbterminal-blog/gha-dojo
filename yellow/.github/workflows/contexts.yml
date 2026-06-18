@@ -1,0 +1,29 @@
+name: Contexts and Expressions
+
+on: push
+
+# TODO: Define a workflow-level environment variable
+#       DOJO_GREETING = "Greetings from the Dojo"
+env:
+  ???: ???
+
+jobs:
+  show-context:
+    runs-on: ubuntu-latest
+
+    steps:
+      # TODO: Step 1 — Print the DOJO_GREETING env var using an expression
+      - name: Print greeting
+        run: echo "${{ ??? }}"
+
+      # TODO: Step 2 — Print the GitHub actor using the github context
+      - name: Who triggered this?
+        run: echo "Triggered by: ${{ ??? }}"
+
+      # TODO: Step 3 — Print the git ref (branch) from the github context
+      - name: What branch?
+        run: echo "Running on ref: ${{ ??? }}"
+
+      # TODO: Step 4 — Print the runner OS from the runner context
+      - name: What runner?
+        run: echo "Runner OS: ${{ ??? }}"

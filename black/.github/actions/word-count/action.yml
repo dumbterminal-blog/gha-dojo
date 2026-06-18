@@ -1,0 +1,17 @@
+# TODO: Fill in the action metadata and wiring
+
+name: ???
+description: Counts the words in a string
+
+inputs:
+  text:
+    description: ???
+    required: ???
+
+outputs:
+  count:
+    description: ???
+
+runs:
+  using: ???    # hint: node20
+  main: ???     # hint: index.js

@@ -1,0 +1,8 @@
+-P ubuntu-latest=local/act-runner:latest
+-P nbit-ars=catthehacker/ubuntu:act-latest
+-v "/var/run/docker.sock:/var/run/docker.sock"
+-e GITHUB_TOKEN
+--env GITHUB_REF=refs/heads/master
+--detect-event
+--reuse
+--pull=false

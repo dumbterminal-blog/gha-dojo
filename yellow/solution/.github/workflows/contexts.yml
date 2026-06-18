@@ -1,0 +1,23 @@
+name: Contexts and Expressions
+
+on: push
+
+env:
+  DOJO_GREETING: "Greetings from the Dojo"
+
+jobs:
+  show-context:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print greeting
+        run: echo "${{ env.DOJO_GREETING }}"
+
+      - name: Who triggered this?
+        run: echo "Triggered by: ${{ github.actor }}"
+
+      - name: What branch?
+        run: echo "Running on ref: ${{ github.ref }}"
+
+      - name: What runner?
+        run: echo "Runner OS: ${{ runner.os }}"

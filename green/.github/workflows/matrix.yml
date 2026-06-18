@@ -1,0 +1,37 @@
+name: Matrix Build
+
+on: push
+
+jobs:
+  test:
+    # TODO: Set runs-on to use the matrix os value
+    runs-on: ${{ matrix.??? }}
+
+    strategy:
+      # TODO: Set fail-fast to false
+      fail-fast: ???
+
+      matrix:
+        # TODO: Define two dimensions:
+        #   os: ubuntu-latest, windows-latest
+        #   node: 18, 20
+        os: ???
+        node: ???
+
+        # TODO: Add an include that adds label: "LTS on Linux"
+        #       only to the combination of ubuntu-latest + node 20
+        include:
+          - os: ???
+            node: ???
+            label: ???
+
+    steps:
+      # TODO: Print "Testing on <os> with Node <node>"
+      - name: Print matrix info
+        run: echo "Testing on ${{ matrix.??? }} with Node ${{ matrix.??? }}"
+
+      # TODO: Add a step that only runs when matrix.label is set
+      #       and prints "Special combo: <label>"
+      - name: Print label if set
+        if: ${{ matrix.??? != '' }}
+        run: echo "Special combo: ${{ matrix.??? }}"

@@ -1,0 +1,38 @@
+name: Conditional Dispatch
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options: [staging, production]
+        default: staging
+        required: true
+      dry-run:
+        type: boolean
+        default: true
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push trigger message
+        if: github.event_name == 'push'
+        run: echo "Triggered by a push event"
+
+      - name: Dispatch trigger message
+        if: github.event_name == 'workflow_dispatch'
+        run: echo "Triggered manually"
+
+  deploy:
+    if: github.event_name == 'workflow_dispatch'
+    needs: preflight
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show environment
+        run: echo "Deploying to: ${{ inputs.environment }}"
+
+      - name: Real deployment
+        if: inputs.dry-run == false
+        run: echo "🚀 REAL DEPLOYMENT"

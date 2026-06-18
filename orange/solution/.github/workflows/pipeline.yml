@@ -1,0 +1,36 @@
+name: Job Pipeline
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-name: ${{ steps.set-artifact.outputs.artifact-name }}
+    steps:
+      - name: Build
+        run: echo "Building the project..."
+      - name: Set artifact name
+        id: set-artifact
+        run: echo "artifact-name=my-app-v1.0" >> $GITHUB_OUTPUT
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    outputs:
+      test-result: ${{ steps.set-result.outputs.test-result }}
+    steps:
+      - name: Test
+        run: echo "Running tests..."
+      - name: Set test result
+        id: set-result
+        run: echo "test-result=passed" >> $GITHUB_OUTPUT
+
+  report:
+    needs: [build, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print build output
+        run: echo "Built artifact: ${{ needs.build.outputs.artifact-name }}"
+      - name: Print test result
+        run: echo "Test result: ${{ needs.test.outputs.test-result }}"

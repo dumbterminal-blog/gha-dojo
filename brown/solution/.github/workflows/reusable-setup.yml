@@ -1,0 +1,15 @@
+name: Reusable Setup
+
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        type: string
+        default: '20'
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show node version
+        run: echo "Setting up Node ${{ inputs.node-version }}"

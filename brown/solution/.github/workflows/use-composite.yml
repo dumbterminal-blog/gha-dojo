@@ -1,0 +1,16 @@
+name: Use Composite Action
+
+on: push
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run greeter action
+        id: greeter
+        uses: ./.github/actions/greet-user
+        with:
+          username: Sensei
+
+      - name: Show the greeting output
+        run: echo "Action said: ${{ steps.greeter.outputs.message }}"

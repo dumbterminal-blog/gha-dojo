@@ -1,0 +1,51 @@
+name: Black Belt Pipeline
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache npm
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-${{ runner.os }}-
+
+      - name: Install action dependencies
+        working-directory: .github/actions/word-count
+        run: npm install
+
+      - name: Count words
+        id: word-counter
+        uses: ./.github/actions/word-count
+        with:
+          text: "The quick brown fox jumps over the lazy dog"
+
+      - name: Write report
+        run: echo "Word count: ${{ steps.word-counter.outputs.count }}" > report.txt
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: word-count-report
+          path: report.txt
+
+  review:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download report
+        uses: actions/download-artifact@v4
+        with:
+          name: word-count-report
+
+      - name: Show report
+        run: cat report.txt

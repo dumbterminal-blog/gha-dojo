@@ -1,0 +1,66 @@
+name: Black Belt Pipeline
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # TODO: Add a caching step BEFORE npm install
+      #   - uses: actions/cache@v4
+      #   - cache path: ~/.npm
+      #   - key: npm-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      #   - restore-keys: npm-${{ runner.os }}-
+      - name: Cache npm
+        uses: ???
+        with:
+          path: ???
+          key: ???
+          restore-keys: |
+            ???
+
+      # Install the action's dependencies
+      - name: Install action dependencies
+        working-directory: .github/actions/word-count
+        run: npm install
+
+      # TODO: Call the word-count action
+      #   id: word-counter
+      #   text: "The quick brown fox jumps over the lazy dog"
+      - name: Count words
+        id: ???
+        uses: ???
+        with:
+          text: ???
+
+      # TODO: Write "Word count: <count>" to report.txt
+      #       using the word-counter step output
+      - name: Write report
+        run: echo "Word count: ${{ steps.???.outputs.??? }}" > report.txt
+
+      # TODO: Upload report.txt as an artefact called 'word-count-report'
+      - name: Upload report
+        uses: ???
+        with:
+          name: ???
+          path: ???
+
+  # ── review job ─────────────────────────────────────────────────────────────
+  review:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      # TODO: Download the 'word-count-report' artefact
+      - name: Download report
+        uses: ???
+        with:
+          name: ???
+
+      # TODO: Print the contents of report.txt
+      - name: Show report
+        run: cat report.txt

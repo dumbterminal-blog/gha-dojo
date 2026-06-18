@@ -1,0 +1,31 @@
+{
+  "name": "GHA Local Runner",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"options": [
+			"--build-arg",
+			"GITHUB_TOKEN=${localEnv:GITHUB_TOKEN}"
+		]
+	},
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "github.vscode-github-actions",
+        "SanjulaGanepola.github-local-actions"
+      ]
+    }
+  },
+	"containerEnv": {
+    "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}"
+  },
+  "containerUser": "vscode",
+  "remoteUser": "vscode",
+	"postStartCommand": "sudo chmod 666 /var/run/docker.sock",
+	"postCreateCommand": "make -f .devcontainer/Makefile act-runner"
+}

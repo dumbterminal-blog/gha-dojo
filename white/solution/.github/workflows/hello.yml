@@ -1,0 +1,13 @@
+name: Hello Dojo
+
+on: push
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo "Hello from the Actions Dojo!"
+
+      - name: Show date
+        run: date

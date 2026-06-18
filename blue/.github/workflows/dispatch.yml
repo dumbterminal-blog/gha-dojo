@@ -1,0 +1,51 @@
+name: Conditional Dispatch
+
+# TODO: Add two triggers — push AND workflow_dispatch
+# The workflow_dispatch should accept:
+#   - environment (choice: staging/production, default: staging, required)
+#   - dry-run (boolean, default: true)
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: ???
+        options: ???
+        default: ???
+        required: ???
+      dry-run:
+        type: ???
+        default: ???
+
+jobs:
+  # ── Job 1: preflight ──────────────────────────────────────────────────────
+  preflight:
+    runs-on: ubuntu-latest
+
+    steps:
+      # TODO: Print "Triggered by a push event" — only when event is 'push'
+      - name: Push trigger message
+        if: ???
+        run: echo "Triggered by a push event"
+
+      # TODO: Print "Triggered manually" — only when event is 'workflow_dispatch'
+      - name: Dispatch trigger message
+        if: ???
+        run: echo "Triggered manually"
+
+  # ── Job 2: deploy ─────────────────────────────────────────────────────────
+  deploy:
+    # TODO: Only run this job when triggered by workflow_dispatch
+    if: ???
+    needs: preflight
+    runs-on: ubuntu-latest
+
+    steps:
+      # TODO: Print "Deploying to: <environment>"
+      - name: Show environment
+        run: echo "Deploying to: ${{ ??? }}"
+
+      # TODO: Only run when dry-run is false — print "🚀 REAL DEPLOYMENT"
+      - name: Real deployment
+        if: ???
+        run: echo "🚀 REAL DEPLOYMENT"

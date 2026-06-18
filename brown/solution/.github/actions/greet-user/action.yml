@@ -1,0 +1,24 @@
+name: Greet User
+description: Greets a user with a Dojo welcome message
+
+inputs:
+  username:
+    description: The user to greet
+    required: true
+
+outputs:
+  message:
+    description: The greeting message
+    value: ${{ steps.build-greeting.outputs.message }}
+
+runs:
+  using: composite
+  steps:
+    - name: Build greeting
+      id: build-greeting
+      shell: bash
+      run: echo "message=Hello, ${{ inputs.username }}! Welcome to the Dojo." >> $GITHUB_OUTPUT
+
+    - name: Print greeting
+      shell: bash
+      run: echo "${{ steps.build-greeting.outputs.message }}"

@@ -1,0 +1,9 @@
+name: Use Reusable Workflow
+
+on: push
+
+jobs:
+  call-setup:
+    uses: ./.github/workflows/reusable-setup.yml
+    with:
+      node-version: '18'

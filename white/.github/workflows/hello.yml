@@ -1,0 +1,22 @@
+# 🤍 White Belt — Hello, Workflow
+# Fill in the TODO sections to complete the challenge.
+# Run with: act push    (from this directory)
+# Or:       ./dojo attempt white   (from the repo root)
+
+# TODO: Give this workflow a name
+name: ???
+
+# TODO: Set the trigger to run on 'push'
+on: ???
+
+jobs:
+  # TODO: Name this job 'greet'
+  ???:
+    # TODO: Run on ubuntu-latest
+    runs-on: ???
+
+    steps:
+      # TODO: Add a step named "Say hello" that prints:
+      #       Hello from the Actions Dojo!
+
+      # TODO: Add a second step named "Show date" that runs the 'date' command
