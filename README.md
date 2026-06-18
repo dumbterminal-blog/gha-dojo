@@ -1,4 +1,4 @@
-![Sensei](command_line_dojo.jpg)
+![Sensei](command_line_dojo.png)
 
 # 🥋 GitHub Actions Dojo
 
