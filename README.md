@@ -88,6 +88,15 @@ actions-dojo/
 
 ---
 
+** 🏆 Hall of Fame
+|                                                                                | Practitioner                                          | 🤍 | 🟡 | 🟠 | 🟢 | 🔵 | 🟤 | ⬛ | 🔴 |
+|--------------------------------------------------------------------------------+-------------------------------------------------------+----+----+----+----+----+----+----+----|
+| [[https://github.com/Ageorge96][[[https://github.com/Ageorge96.png?size=40]]]] | [[https://github.com/Ageorge96][[cite/t:@Ageorge96]]] | ✅ | ✅ | ✅ | ·  | ·  | ·  | ·  | ·  |
+
+Earned a belt? Open a PR and add your row.
+
+---
+
 ## Tips
 
 - `act` runs workflows inside Docker using the same runner image as GitHub. What works here works in CI.
