@@ -88,11 +88,12 @@ actions-dojo/
 
 ---
 
-** 🏆 Hall of Fame
-|                                                                                | Practitioner                                          | 🤍 | 🟡 | 🟠 | 🟢 | 🔵 | 🟤 | ⬛ | 🔴 |
-|--------------------------------------------------------------------------------+-------------------------------------------------------+----+----+----+----+----+----+----+----|
-| [[https://github.com/Ageorge96][[[https://github.com/Ageorge96.png?size=40]]]] | [[https://github.com/Ageorge96][[cite/t:@Ageorge96]]] | ✅ | ✅ | ✅ | ·  | ·  | ·  | ·  | ·  |
-
+## 🏆 Hall of Fame
+ 
+| | Practitioner | 🤍 | 🟡 | 🟠 | 🟢 | 🔵 | 🟤 | ⬛ | 🔴 |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| <img src="https://github.com/Ageorge96.png?size=40" width="40" height="40"> | [@Ageorge96](https://github.com/Ageorge96) | ✅ | ✅ | ✅ | · | · | · | · | · |
+ 
 Earned a belt? Open a PR and add your row.
 
 ---
