@@ -3,11 +3,11 @@ name: Reusable Setup
 # TODO: Set the trigger to workflow_call
 #       with an input 'node-version' (type: string, default: '20')
 on:
-  ???:
+  workflow_call:
     inputs:
-      ???:
-        type: ???
-        default: ???
+      node-version:
+        type: string
+        default: '20'
 
 jobs:
   setup:
@@ -15,4 +15,4 @@ jobs:
     steps:
       # TODO: Print "Setting up Node <node-version>"
       - name: Show node version
-        run: echo "Setting up Node ${{ ??? }}"
+        run: echo "Setting up Node ${{ inputs.node-version }}"

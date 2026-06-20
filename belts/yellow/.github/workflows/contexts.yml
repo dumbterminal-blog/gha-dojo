@@ -5,7 +5,7 @@ on: push
 # TODO: Define a workflow-level environment variable
 #       DOJO_GREETING = "Greetings from the Dojo"
 env:
-  ???: ???
+  DOJO_GREETING: Greetings from the Dojo
 
 jobs:
   show-context:
@@ -14,16 +14,18 @@ jobs:
     steps:
       # TODO: Step 1 — Print the DOJO_GREETING env var using an expression
       - name: Print greeting
-        run: echo "${{ ??? }}"
+        run: |
+          echo "${DOJO_GREETING}"
+          echo "${{ env.DOJO_GREETING }}" 
 
       # TODO: Step 2 — Print the GitHub actor using the github context
       - name: Who triggered this?
-        run: echo "Triggered by: ${{ ??? }}"
+        run:  echo "Triggered by":" ${{ github.actor }}"
 
       # TODO: Step 3 — Print the git ref (branch) from the github context
       - name: What branch?
-        run: echo "Running on ref: ${{ ??? }}"
+        run: echo "Running on ref ${{ github.ref }}"
 
       # TODO: Step 4 — Print the runner OS from the runner context
       - name: What runner?
-        run: echo "Runner OS: ${{ ??? }}"
+        run: echo "Runner OS":" ${{ runner.os }}"

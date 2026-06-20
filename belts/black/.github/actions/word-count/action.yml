@@ -1,17 +1,17 @@
 # TODO: Fill in the action metadata and wiring
 
-name: ???
+name: Word Counter
 description: Counts the words in a string
 
 inputs:
   text:
-    description: ???
-    required: ???
+    description: Input string to be counted
+    required: true
 
 outputs:
   count:
-    description: ???
+    description: Total number of words
 
 runs:
-  using: ???    # hint: node20
-  main: ???     # hint: index.js
+  using: node20    # hint: node20
+  main: index.js     # hint: index.js

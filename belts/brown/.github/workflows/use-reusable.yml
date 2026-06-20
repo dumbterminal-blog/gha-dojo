@@ -6,8 +6,8 @@ jobs:
   # TODO: Create a job called 'call-setup' that:
   #   - calls ./.github/workflows/reusable-setup.yml
   #   - passes node-version: '18'
-  # Remember: a job that uses a reusable workflow cannot have steps:
-  ???:
-    uses: ???
+  # Remember: a job that uses a reusable workflow cannot have `steps`:
+  call-setup:
+    uses: ./.github/workflows/reusable-setup.yml
     with:
-      ???: ???
+      node-version: '18'

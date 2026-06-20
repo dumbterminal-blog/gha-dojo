@@ -11,11 +11,12 @@ jobs:
       #       Pass username: Sensei
       - uses: actions/checkout@v4
       - name: Run greeter action
-        id: ???
-        uses: ???
+        id: greeter
+        uses: ./.github/actions/greet-user
         with:
-          username: ???
+          username: Sensei
 
       # TODO: Print the 'message' output from the greeter step
       - name: Show the greeting output
-        run: echo "Action said: ${{ steps.???.outputs.??? }}"
+        run: echo "Action said":" ${{ steps.greeter.outputs.message }}"
+        # Not printing message
