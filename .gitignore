@@ -4,3 +4,4 @@ yarn-error.log
 __pycache__
 .idea
 /.yarn/
+.env
