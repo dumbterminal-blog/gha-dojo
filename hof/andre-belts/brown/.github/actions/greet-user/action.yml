@@ -1,0 +1,32 @@
+# TODO: Give this action a name and description
+name: Greet user
+description: Send a greeting message to the user
+
+inputs:
+  # TODO: Define an input called 'username' that is required
+  username:
+    description: Input for user's login ID
+    required: true
+
+outputs:
+  # TODO: Define an output called 'message'
+  #       Its value should come from steps.build-greeting.outputs.message
+  message:
+    description: Message to send to the user
+    value: ${{ steps.build_greeting.outputs.message }}
+
+runs:
+  using: composite
+  steps:
+    # TODO: Step 1 — build the greeting and write to GITHUB_OUTPUT
+    #       id: build-greeting
+    #       message = "Hello, <username>! Welcome to the Dojo."
+    - name: Build greeting
+      id: build-greeting
+      shell: bash
+      run: echo "message=Hello, ${{ inputs.username }}! Welcome to the Dojo." >> $GITHUB_OUTPUT
+
+    # TODO: Step 2 — echo the message output
+    - name: Print greeting
+      shell: bash
+      run: echo "${{ steps.build-greeting.outputs.message }}"
