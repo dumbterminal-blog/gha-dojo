@@ -1,0 +1,61 @@
+name: Job Pipeline
+
+on: push
+
+jobs:
+  # ── Job 1: build ──────────────────────────────────────────────────────────
+  build:
+    runs-on: ubuntu-latest
+
+    # TODO: Declare a job output called 'artifact-name'
+    #       It should come from a step with id 'set-artifact'
+    outputs:
+      artifact-name: ${{ steps.set-artifact.outputs.artifact-name }}
+
+    steps:
+      - name: Build
+        run: echo "Building the project..."
+
+      # TODO: Add a step with:
+      #   id: set-artifact
+      #   writes artifact-name=my-app-v1.0 to $GITHUB_OUTPUT
+      - name: Set artifact name
+        id: set-artifact
+        run: echo "artifact-name=my-app-v1.0" >> $GITHUB_OUTPUT
+
+  # ── Job 2: test ───────────────────────────────────────────────────────────
+  test:
+    # TODO: Make this job depend on 'build'
+    needs: build
+    runs-on: ubuntu-latest
+
+    # TODO: Declare a job output called 'test-result'
+    outputs:
+      test-result: ${{ steps.test-result.outputs.test-result }}
+
+    steps:
+      - name: Test
+        run: echo "Running tests..."
+
+      # TODO: Add a step that writes test-result=passed to $GITHUB_OUTPUT
+      - name: Set test result
+        id: test-result
+        run: echo "test-result=passed" >> $GITHUB_OUTPUT
+
+  # ── Job 3: report ─────────────────────────────────────────────────────────
+  report:
+    # TODO: Make this job depend on BOTH 'build' and 'test'
+    needs: 
+      - build
+      - test
+
+    runs-on: ubuntu-latest
+
+    steps:
+      # TODO: Print "Built artifact: <artifact-name from build job>"
+      - name: Print build output
+        run: echo "Built artifact":" ${{ needs.build.outputs.artifact-name }}"
+
+      # TODO: Print "Test result: <test-result from test job>"
+      - name: Print test result
+        run: echo "Test result":" ${{ needs.test.outputs.test-result }}"

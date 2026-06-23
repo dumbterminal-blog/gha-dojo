@@ -1,0 +1,22 @@
+name: Use Composite Action
+
+on: push
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      # TODO: Call the composite action at .github/actions/greet-user
+      #       Give this step the id 'greeter'
+      #       Pass username: Sensei
+      - uses: actions/checkout@v4
+      - name: Run greeter action
+        id: greeter
+        uses: ./.github/actions/greet-user
+        with:
+          username: Sensei
+
+      # TODO: Print the 'message' output from the greeter step
+      - name: Show the greeting output
+        run: echo "Action said":" ${{ steps.greeter.outputs.message }}"
+        # Not printing message
