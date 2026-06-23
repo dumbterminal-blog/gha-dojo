@@ -139,7 +139,7 @@ echo ""
 info "Running the full pipeline with act..."
 echo ""
 
-cd "$BELT_DIR" && act push \
+cd "$BELT_DIR" && act push --artifact-server-path /tmp/artifacts \
   --workflows ".github/workflows/black-belt.yml" \
   --secret-file "$DOJO_ROOT/.env" \
   2>&1 | tee /tmp/dojo-act-black.txt | grep -E '(Word count|Cache|Artifact|report|✅|❌)' || true

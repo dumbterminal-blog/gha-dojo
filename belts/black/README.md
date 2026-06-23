@@ -112,3 +112,11 @@ run().catch(core.setFailed);
 ---
 
 > 💡 **Hint:** Run `./dojo hint black` if you get stuck.
+
+## Act pipeline failure
+
+run `act push` with the flag `--artifact-server-path /tmp/artifacts`
+
+https://github.com/nektos/act/discussions/2231
+
+This flag is not a part of github actions. It is a flag for tools that run workflows locally. When you run a workflow on GitHub's servers, artifact uploads are sent to GitHub's artifact service automatically. But when running locally, there is no GitHub artifact service available, so `act` can start a local artifact server.

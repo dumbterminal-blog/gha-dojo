@@ -9,6 +9,7 @@ jobs:
       # TODO: Call the composite action at .github/actions/greet-user
       #       Give this step the id 'greeter'
       #       Pass username: Sensei
+      - uses: actions/checkout@v4
       - name: Run greeter action
         id: ???
         uses: ???
